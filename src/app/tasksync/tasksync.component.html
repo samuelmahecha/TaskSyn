@@ -1,49 +1,99 @@
-<div class="container">
+<main class="container">
+  <header>
     <h1>TaskSync</h1>
+  </header>
 
-    <hr>
+  <section>
     <form id="submitForm" (ngSubmit)="onSubmit(taskform)" #taskform="ngForm">
-    <div class="form-group">
-      <input type="text" 
-      class="form-control" 
-      id="task"  
-      placeholder="Enter task" 
-      ngModel name="task"
-      required>
-      <small *ngIf="taskform.invalid && taskform.dirty" id="errorMessage" class="form-text text-danger">Requiered field.</small>
-    </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="task"
+          placeholder="Enter task"
+          ngModel
+          name="task"
+          required
+        />
+        <small
+          *ngIf="taskform.invalid && taskform.dirty"
+          id="errorMessage"
+          class="form-text text-danger"
+          >Requiered field.</small
+        >
+      </div>
+      <button
+        [disabled]="taskform.invalid"
+        id="submitButton"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Submit
+      </button>
+    </form>
+  </section>
 
-    <button 
-    [disabled]="taskform.invalid"
-    id="submitButton" 
-    type="submit" 
-    class="btn btn-primary">Submit</button>
-  </form>
-
-  <hr>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Task</th>
-        <th scope="col">Completed</th>
-        <th scope="col">Deleted</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Save</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let t of taskArray; index as i">
-        <td>
-          <input #taskinput [ngClass]="{'edit': t.isEditable, 'notEdit': !t.isEditable, 'crossed': t.isCompleted}" type="text" 
-          class="form-control" 
-          id="taskInTable"  
-          value="{{t.taskName}}" [readonly]="!t.isEditable">  
-        </td>
-        <td><input (change)="onCheck(i)" id="checkbox" type="checkbox"></td>
-        <td><button id="delete" class="btn btn-danger btn-sm" (click)="onDelete(i)" >Delete</button></td>
-        <td><button id="edit" class="btn btn-primary btn-sm" (click)="onEdit(i)" [disabled]="t.isEditable" >Edit</button></td>
-        <td><button id="save" class="btn btn-warning btn-sm" (click)="onSave(i, taskinput.value)" [disabled]="!t.isEditable" >Save</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <section>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Completed</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of taskArray; index as i">
+          <td>
+            <input
+              #taskinput
+              [ngClass]="{
+                edit: t.isEditable,
+                notEdit: !t.isEditable,
+                crossed: t.isCompleted
+              }"
+              type="text"
+              class="form-control"
+              id="taskInTable"
+              value="{{ t.taskName }}"
+              [readonly]="!t.isEditable"
+            />
+          </td>
+          <td>
+            <input
+              (change)="onCheck(i)"
+              id="checkbox"
+              type="checkbox"
+              [checked]="t.isCompleted"
+            />
+          </td>
+          <td class="actions">
+            <button
+              id="delete"
+              class="btn btn-danger btn-sm"
+              (click)="onDelete(i)"
+            >
+              Delete
+            </button>
+            <button
+              id="edit"
+              class="btn btn-primary btn-sm"
+              (click)="onEdit(i)"
+              [disabled]="t.isEditable"
+            >
+              Edit
+            </button>
+            <button
+              id="save"
+              class="btn btn-warning btn-sm"
+              (click)="onSave(i, taskinput.value)"
+              [disabled]="!t.isEditable"
+            >
+              Save
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
