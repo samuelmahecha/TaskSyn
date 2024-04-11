@@ -1,14 +1,15 @@
 <div class="room-container">
-    <div class="login-form">
-      <h2>Crear o unirse a una sala</h2>
-      <input type="text" placeholder="Nombre de usuario" [(ngModel)]="username" />
-      <div class="room-options">
-        <input type="text" placeholder="Nombre de la sala" [(ngModel)]="roomName" />
-        <button (click)="createRoom()">Crear sala</button>
-        <button (click)="joinRoom()">Unirse a sala</button>
-      </div>
+  <div class="login-form">
+    <h2>Crear o unirse a una sala</h2>
+    <input type="text" placeholder="Nombre de usuario" [(ngModel)]="username" />
+    <div class="room-options">
+      <input type="text" placeholder="Nombre de la sala" [(ngModel)]="roomName" />
+      <button (click)="createRoom()">Crear sala</button>
+      <button (click)="joinRoom()">Unirse a sala</button>
     </div>
-    <div class="canvas-container">
-      <canvas #canvas></canvas>
-    </div>
+    <input type="text" placeholder="Escribe tu texto" [(ngModel)]="textInput" />
   </div>
+  <div class="canvas-container">
+    <canvas #canvas></canvas>
+  </div>
+</div>
