@@ -1,26 +1,63 @@
 .room-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .login-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .room-options {
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.room-options {
+  margin-top: 20px;
+}
+
+.room-options input[type="text"],
+.room-options button {
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: #000; /* Texto negro */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.room-options input[type="text"] {
+  width: 200px;
+}
+
+.room-options button {
+  background-color: #0077cc; /* Azul más oscuro para botones */
+}
+
+.room-options button.user-name,
+
+.room-options button.room-name {
+  background-color: #0077cc; /* Azul más oscuro para botón de crear usuario y de nombre de sala */
+  color: #000; /* Texto negro */
+  border-radius: 5px; /* Añadido para hacerlos redondeados */
+}
+
+.room-options button:hover {
+  background-color: #005fa3; /* Cambio de color más oscuro al pasar el mouse */
+}
   .canvas-container {
     margin-left: 20px;
+    position: relative;
   }
-  
+  .canvas-container input[type="text"] {
+    position: absolute;
+    bottom: 20px; /* Puedes ajustar esto según tu preferencia */
+    left: 10px; /* Puedes ajustar esto según tu preferencia */
+    width: calc(100% - 535px); /* Ajusta el ancho en función del área de herramientas */
+  }
   canvas {
     border: 1px solid #ccc;
   }
