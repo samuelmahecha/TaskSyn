@@ -20,4 +20,31 @@ describe('RoomLoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should update username and roomName on user input', () => {
+    component.username = 'testUser';
+    component.roomName = 'testRoom';
+    fixture.detectChanges();
+    expect(component.username).toEqual('testUser');
+    expect(component.roomName).toEqual('testRoom');
+  });
+  it('should call createRoom on button click', () => {
+    spyOn(component, 'createRoom');
+    const button = fixture.nativeElement.querySelector('button#createRoomButton'); // Assuming you have a button with this id
+    button.click();
+    expect(component.createRoom).toHaveBeenCalled();
+  });
+  
+  it('should call joinRoom on button click', () => {
+    spyOn(component, 'joinRoom');
+    const button = fixture.nativeElement.querySelector('button#joinRoomButton'); // Assuming you have a button with this id
+    button.click();
+    expect(component.joinRoom).toHaveBeenCalled();
+  });
+  it('should call ngAfterViewInit', () => {
+    spyOn(component, 'ngAfterViewInit');
+    fixture.detectChanges();
+    expect(component.ngAfterViewInit).toHaveBeenCalled();
+  });
+      
+
 });
