@@ -11,7 +11,7 @@ describe('RoomLoginComponent', () => {
       declarations: [RoomLoginComponent],
       imports: [FormsModule]
     }).compileComponents();
-    
+
     fixture = TestBed.createComponent(RoomLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -35,5 +35,5 @@ describe('RoomLoginComponent', () => {
     expect(component.joinRoom).toHaveBeenCalled();
   });
 
-  // Se puede agregar más pruebas según sea necesario
+  // Se pueden agregar más pruebas según sea necesario
 });
